@@ -1,0 +1,299 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, #45315e 0%, transparent 35%),
+    radial-gradient(circle at 80% 80%, #552d49 0%, transparent 35%),
+    linear-gradient(135deg, #10152d, #21152e, #321b36);
+  color: #fff3e9;
+  font-family: 'Poppins', sans-serif;
+}
+
+.scene {
+  min-height: 100vh;
+  width: 100%;
+  padding: 45px 18px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.top-label,
+.letter-small {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #e8b9c9;
+}
+
+.heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 8vw, 48px);
+  font-weight: 500;
+  margin-top: 14px;
+  color: #ffe4e9;
+}
+
+.envelope-area {
+  width: 290px;
+  height: 225px;
+  display: grid;
+  place-items: center;
+  margin-top: 35px;
+  perspective: 900px;
+  overflow: visible;
+}
+
+.envelope {
+  width: 250px;
+  height: 160px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #e8b8c5;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.letter-preview {
+  position: absolute;
+  width: 90%;
+  height: 135px;
+  background: #fff3e4;
+  color: #793d55;
+  left: 5%;
+  top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  z-index: 2;
+  transition: transform 1s ease, opacity 0.7s ease;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #d88da5, #b85c7a);
+  clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  background: #f0c2ce;
+  clip-path: polygon(0 0, 100% 0, 50% 58%);
+  transform-origin: top center;
+  transition: transform 0.8s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  z-index: 4;
+}
+
+.seal {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #8f294f;
+  color: #ffe5e8;
+  box-shadow: 0 3px 12px #4c173a;
+  transition: opacity 0.4s;
+}
+
+.tap-text {
+  margin-top: 8px;
+  color: #eac9d6;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+button {
+  border: 1px solid #e9b6c8;
+  background: linear-gradient(135deg, #b34d72, #7e315b);
+  color: white;
+  border-radius: 30px;
+  padding: 13px 27px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  margin-top: 23px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px #0004;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+/* Envelope opening animation */
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+
+.envelope.open .letter-preview {
+  transform: translateY(-150px);
+  opacity: 0;
+}
+
+.envelope.open {
+  transform: translateY(20px);
+}
+
+/* Birthday letter */
+
+.birthday-letter {
+  display: none;
+  position: relative;
+  z-index: 3;
+  width: min(100%, 410px);
+  margin-top: 35px;
+  padding: 35px 24px;
+  border-radius: 5px;
+  color: #5a3547;
+  background:
+    radial-gradient(circle at top right, #f8dce2, transparent 40%),
+    linear-gradient(135deg, #fff8ed, #f5e5d9);
+  box-shadow: 0 15px 50px #0006;
+}
+
+.birthday-letter.show {
+  display: block;
+  animation: reveal 1s ease both;
+}
+
+.letter-decoration {
+  color: #bd6684;
+  font-size: 20px;
+  margin: 12px 0;
+}
+
+.birthday-letter h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  line-height: 1.05;
+  color: #9b4161;
+  margin: 15px 0;
+}
+
+.rose {
+  font-size: 35px;
+  margin: 15px;
+}
+
+.message {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.65;
+  text-align: center;
+  color: #624253;
+}
+
+.signature {
+  margin-top: 25px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: #9b4161;
+}
+
+.signature-name {
+  font-size: 13px;
+  color: #94677a;
+  margin-top: 5px;
+}
+
+.birthday-letter button {
+  margin-top: 25px;
+}
+
+footer {
+  margin-top: auto;
+  padding-top: 45px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #d9a6bb;
+}
+
+/* Background stars */
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .65;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 50%, transparent),
+    radial-gradient(2px 2px at 80% 20%, white 50%, transparent),
+    radial-gradient(1px 1px at 60% 70%, white 50%, transparent),
+    radial-gradient(2px 2px at 35% 85%, white 50%, transparent),
+    radial-gradient(1px 1px at 90% 60%, white 50%, transparent);
+  background-size: 180px 180px;
+  animation: twinkle 4s infinite alternate;
+}
+
+/* Falling petals */
+
+.petal {
+  position: fixed;
+  top: -20px;
+  z-index: 1;
+  pointer-events: none;
+  color: #f4a9c0;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(600deg);
+    opacity: 0;
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: .25;
+  }
+  to {
+    opacity: .8;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
